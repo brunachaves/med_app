@@ -12,7 +12,7 @@ const getAppointment = async (id) => {
     }
 }
 
-const saveAppointments = async ({date, doctorId, pacientId}) => {
+const saveAppointment = async ({date, doctorId, pacientId}) => {
     try {
        const prescription = new Appointment ({date, doctorId, pacientId});
        return await prescription.save();
@@ -23,7 +23,7 @@ const saveAppointments = async ({date, doctorId, pacientId}) => {
 
 const updateAppointment = async (id, {date, doctorId, pacientId}) => {
     try {
-        return await Appointment.findByIdAndUpdate(id, (date, doctorId, pacientId));
+        return await Appointment.findByIdAndUpdate(id, {date, doctorId, pacientId}, {new: true});
     } catch (error) {
         throw new Error(error);
     }
@@ -40,7 +40,7 @@ const deleteAppointment = async (id) => {
 const appointmentRepository = {
     getAllAppointments,
     getAppointment,
-    saveAppointments,
+    saveAppointment,
     updateAppointment,
     deleteAppointment
 }

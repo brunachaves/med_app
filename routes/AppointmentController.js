@@ -1,5 +1,5 @@
 import { express } from "express";
-import appointmentService, { AppointmentServices } from "../services/AppointmentServices";
+import { appointmentServices } from "../services/AppointmentServices";
 
 let router = express.Router();
 
@@ -16,7 +16,7 @@ router.get('/appoitments', async(req, res) => {
 router.get('/getAppoitments/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const appoitment = appointmentService.getAppointments(id);
+        const appoitment = appointmentService.getAppointment(id);
         res.send(appoitment);
     } catch (error) {
         console.log(error);
