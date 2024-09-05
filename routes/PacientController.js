@@ -3,7 +3,7 @@ import { PacientServices } from "../services/PacientServices.js";
 
 let router = express.Router();
 
-router.get('/pacients', async(res, res) => {
+router.get('/pacients', async(req, res) => {
     try {
         const pacients = PacientServices.getAllPacients();
         res.send(pacients);

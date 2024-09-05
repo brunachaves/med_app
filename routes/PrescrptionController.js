@@ -5,7 +5,7 @@ import prescription from "../models/Prescription.js";
 
 let router = express.Router();
 
-router.get('/prescription', async(res, res) => {
+router.get('/prescription', async(req, res) => {
     try {
         const prescription = PrescriptionServices.getAllPrescriptions();
         res.send(prescription);
