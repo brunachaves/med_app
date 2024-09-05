@@ -50,7 +50,7 @@ router.put('/doctors/:id', async(req, res) => {
 router.delete('/doctors/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const doctor = doctorServices.updateDoctor(id);
+        const doctor = doctorServices.deleteDoctor(id);
         res.send(doctor);
     } catch (error) {
         console.log(error);
