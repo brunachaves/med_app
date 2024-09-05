@@ -1,11 +1,11 @@
 import { express } from "express";
-import { appointmentServices } from "../services/AppointmentServices";
+import { AppointmentServices } from "../services/AppointmentServices";
 
 let router = express.Router();
 
 router.get('/appoitments', async(req, res) => {
     try {
-        const appoitments = appointmentService.getAllAppointments();
+        const appoitments = AppointmentService.getAllAppointments();
         res.send(appoitments);
     } catch (error) {
         console.log(error);
@@ -16,7 +16,7 @@ router.get('/appoitments', async(req, res) => {
 router.get('/getAppoitments/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const appoitment = appointmentService.getAppointment(id);
+        const appoitment = AppointmentService.getAppointment(id);
         res.send(appoitment);
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ router.get('/getAppoitments/:id', async(req, res) => {
 router.post('/postAppoitments', async(req, res) => {
     const {date, doctorId, pacientId} = req.body;
     try {
-        const appoitment = appointmentService.saveAppointment({date, doctorId, pacientId});
+        const appoitment = AppointmentService.saveAppointment({date, doctorId, pacientId});
         res.send(appoitment);
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ router.put('/appoitments/:id', async(req, res) => {
     const {id} = req.params;
     const {date, doctorId, pacientId} = req.body;
     try {
-        const appoitment = appointmentService.updateAppointment(id, {date, doctorId, pacientId});
+        const appoitment = AppointmentService.updateAppointment(id, {date, doctorId, pacientId});
         res.send(appoitment);
     } catch (error) {
         console.log(error);
@@ -50,7 +50,7 @@ router.put('/appoitments/:id', async(req, res) => {
 router.delete('/appoitments/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const appoitment = appointmentService.deleteAppointment(id);
+        const appoitment = AppointmentService.deleteAppointment(id);
         res.send(appoitment);
     } catch (error) {
         console.log(error);

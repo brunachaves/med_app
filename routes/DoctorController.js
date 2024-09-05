@@ -1,11 +1,11 @@
 import { express } from "express";
-import { doctorServices } from "../services/DoctorServices";
+import { DoctorServices } from "../services/DoctorServices";
 
 let router = express.Router();
 
 router.get('/doctors', async(req, res) => {
     try {
-        const doctors = doctorServices.getAllDoctors();
+        const doctors = DoctorServices.getAllDoctors();
         res.send(doctors);
     } catch (error) {
         console.log(error);
@@ -16,7 +16,7 @@ router.get('/doctors', async(req, res) => {
 router.get('/getdoctors/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const doctor = doctorServices.getDoctor(id);
+        const doctor = DoctorServices.getDoctor(id);
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ router.get('/getdoctors/:id', async(req, res) => {
 router.post('/postdoctors', async(req, res) => {
     const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
-        const doctor = doctorServices.saveDoctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = DoctorServices.saveDoctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ router.put('/doctors/:id', async(req, res) => {
     const {id} = req.params;
     const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
-        const doctor = doctorServices.updateDoctor(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = DoctorServices.updateDoctor(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -50,7 +50,7 @@ router.put('/doctors/:id', async(req, res) => {
 router.delete('/doctors/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const doctor = doctorServices.deleteDoctor(id);
+        const doctor = DoctorServices.deleteDoctor(id);
         res.send(doctor);
     } catch (error) {
         console.log(error);

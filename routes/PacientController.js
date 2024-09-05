@@ -1,11 +1,11 @@
 import { express } from "express";
-import { pacientServices } from "../services/PacientServices.js";
+import { PacientServices } from "../services/PacientServices.js";
 
 let router = express.Router();
 
 router.get('/pacients', async(res, res) => {
     try {
-        const pacients = pacientServices.getAllPacients();
+        const pacients = PacientServices.getAllPacients();
         res.send(pacients);
     } catch (error) {
         console.log(error);
@@ -16,7 +16,7 @@ router.get('/pacients', async(res, res) => {
 router.get('/getPacient/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const pacient = pacientServices.getPacient(id);
+        const pacient = PacientServices.getPacient(id);
         res.send(pacient);
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ router.get('/getPacient/:id', async (req, res) => {
 router.post('/postPacient', async (req, res) => {
     const {name, bithdate, email, phone} = req.body;
     try {
-        const pacient = pacientServices.savePacient({name, bithdate, email, phone});
+        const pacient = PacientServices.savePacient({name, bithdate, email, phone});
         res.send(pacient);
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ router.put('pacient/:id', async (req, res) => {
     const {id} = req.params;
     const {name, bithdate, email, phone} = req.body;
     try {
-        const pacient = pacientServices.updatePacient(id, {name, bithdate, email, phone});
+        const pacient = PacientServices.updatePacient(id, {name, bithdate, email, phone});
         res.send(pacient);
     } catch (error) {
         console.log(error);
@@ -50,7 +50,7 @@ router.put('pacient/:id', async (req, res) => {
 router.delete('/pacient/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const pacient = pacientServices.deletePacient(id);
+        const pacient = PacientServices.deletePacient(id);
         res.send(pacient);
     } catch (error) {
         console.log(error);
