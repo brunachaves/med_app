@@ -1,5 +1,5 @@
-import { express } from "express";
-import { DoctorServices } from "../services/DoctorServices";
+import  express  from "express";
+import  DoctorServices  from "../services/DoctorServices.js";
 
 let router = express.Router();
 
@@ -58,4 +58,4 @@ router.delete('/doctors/:id', async(req, res) => {
     }
 });
 
-export default router();
+export default router;

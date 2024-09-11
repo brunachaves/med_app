@@ -1,4 +1,4 @@
-import { PacientRepository } from "../repositories/PacientRepository";
+import  PacientRepository  from "../repositories/PacientRepository";
 
 const getAllPacients = async() => {
     return PacientRepository.getAllPacients();

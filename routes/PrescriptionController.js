@@ -1,5 +1,5 @@
-import { express } from "express";
-import { PrescriptionServices } from "../services/PrescriptionServices.js";
+import  express  from "express";
+import  PrescriptionServices  from "../services/PrescriptionServices.js";
 import prescription from "../models/Prescription.js";
 
 
@@ -60,4 +60,4 @@ router.delete('/prescription/:id', async (req, res) => {
     }
 });
 
-export default router();
+export default router;
