@@ -13,7 +13,7 @@ router.get('/doctors', async(req, res) => {
     }
 });
 
-router.get('/getdoctors/:id', async(req, res) => {
+router.get('/getdDoctor/:id', async(req, res) => {
     const {id} = req.params;
     try {
         const doctor = DoctorServices.getDoctor(id);
@@ -24,7 +24,7 @@ router.get('/getdoctors/:id', async(req, res) => {
     }
 });
 
-router.post('/postdoctors', async(req, res) => {
+router.post('/postDoctor', async(req, res) => {
     const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
         const doctor = DoctorServices.saveDoctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
