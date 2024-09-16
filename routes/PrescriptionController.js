@@ -7,7 +7,7 @@ let router = express.Router();
 
 router.get('/prescription', async(req, res) => {
     try {
-        const prescription = PrescriptionServices.getAllPrescriptions();
+        const prescription = await PrescriptionServices.getAllPrescriptions();
         res.send(prescription);
     } catch (error) {
         console.log(error);
@@ -29,7 +29,7 @@ router.get('/getPrescription/:id', async (req, res) => {
 router.post('/postPrescription', async (req, res) => {
     const {date, appointmentId, medicine, dosage, instructions} = req.body;
     try {
-        const prescription = PrescriptionServices.savePrescription({date, appointmentId, medicine, dosage, instructions});
+        const prescription = await PrescriptionServices.savePrescription({date, appointmentId, medicine, dosage, instructions});
         res.send(prescription);
     } catch (error) {
         console.log(error);
@@ -41,7 +41,7 @@ router.put('prescription/:id', async (req, res) => {
     const {id} = req.params;
     const {date, appointmentId, medicine, dosage, instructions} = req.body;
     try {
-        const prescription = PrescriptionServices.updatePrescription(id, {date, appointmentId, medicine, dosage, instructions});
+        const prescription = await PrescriptionServices.updatePrescription(id, {date, appointmentId, medicine, dosage, instructions});
         res.send(prescription);
     } catch (error) {
         console.log(error);
@@ -52,7 +52,7 @@ router.put('prescription/:id', async (req, res) => {
 router.delete('/prescription/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const prescription = PrescriptionServices.deletePrescription(id);
+        const prescription = await PrescriptionServices.deletePrescription(id);
         res.send(prescription);
     } catch (error) {
         console.log(error);

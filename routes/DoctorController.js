@@ -5,7 +5,7 @@ let router = express.Router();
 
 router.get('/doctors', async(req, res) => {
     try {
-        const doctors = DoctorServices.getAllDoctors();
+        const doctors = await DoctorServices.getAllDoctors();
         res.send(doctors);
     } catch (error) {
         console.log(error);
@@ -16,7 +16,7 @@ router.get('/doctors', async(req, res) => {
 router.get('/getdDoctor/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const doctor = DoctorServices.getDoctor(id);
+        const doctor = await DoctorServices.getDoctor(id);
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ router.get('/getdDoctor/:id', async(req, res) => {
 router.post('/postDoctor', async(req, res) => {
     const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
-        const doctor = DoctorServices.saveDoctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = await DoctorServices.saveDoctor({name, login, password, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ router.put('/doctors/:id', async(req, res) => {
     const {id} = req.params;
     const {name, login, password, medicalSpecialty, medicalRegistration, email, phone} = req.body;
     try {
-        const doctor = DoctorServices.updateDoctor(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone});
+        const doctor = await DoctorServices.updateDoctor(id, {name, login, password, medicalSpecialty, medicalRegistration, email, phone});
         res.send(doctor);
     } catch (error) {
         console.log(error);
@@ -50,7 +50,7 @@ router.put('/doctors/:id', async(req, res) => {
 router.delete('/doctors/:id', async(req, res) => {
     const {id} = req.params;
     try {
-        const doctor = DoctorServices.deleteDoctor(id);
+        const doctor = await DoctorServices.deleteDoctor(id);
         res.send(doctor);
     } catch (error) {
         console.log(error);

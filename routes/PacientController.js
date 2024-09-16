@@ -5,7 +5,7 @@ let router = express.Router();
 
 router.get('/pacients', async(req, res) => {
     try {
-        const pacients = PacientServices.getAllPacients();
+        const pacients = await PacientServices.getAllPacients();
         res.send(pacients);
     } catch (error) {
         console.log(error);
@@ -16,7 +16,7 @@ router.get('/pacients', async(req, res) => {
 router.get('/getPacient/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const pacient = PacientServices.getPacient(id);
+        const pacient = await PacientServices.getPacient(id);
         res.send(pacient);
     } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ router.get('/getPacient/:id', async (req, res) => {
 router.post('/postPacient', async (req, res) => {
     const {name, bithdate, email, phone} = req.body;
     try {
-        const pacient = PacientServices.savePacient({name, bithdate, email, phone});
+        const pacient = await PacientServices.savePacient({name, bithdate, email, phone});
         res.send(pacient);
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ router.put('pacient/:id', async (req, res) => {
     const {id} = req.params;
     const {name, bithdate, email, phone} = req.body;
     try {
-        const pacient = PacientServices.updatePacient(id, {name, bithdate, email, phone});
+        const pacient = await PacientServices.updatePacient(id, {name, bithdate, email, phone});
         res.send(pacient);
     } catch (error) {
         console.log(error);
@@ -50,7 +50,7 @@ router.put('pacient/:id', async (req, res) => {
 router.delete('/pacient/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const pacient = PacientServices.deletePacient(id);
+        const pacient = await PacientServices.deletePacient(id);
         res.send(pacient);
     } catch (error) {
         console.log(error);
